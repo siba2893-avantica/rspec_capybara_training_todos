@@ -1,12 +1,9 @@
 feature "User completes todo" do
   scenario "successfully" do
+    title = "comprar arroz"
     sign_in
-
-    click_on "Add new todo"
-    fill_in "Title", with: "comprar arroz"
-    click_on "Submit"
-
+    create_todo(title)
     click_on "Mark complete"
-    expect(page).to have_css '.todos li.completed', text: "comprar arroz"
+    expect(page).to display_completed_todo(title)
   end
 end

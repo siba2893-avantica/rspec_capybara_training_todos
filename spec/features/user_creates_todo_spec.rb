@@ -1,11 +1,8 @@
 feature "User creates todo" do
   scenario "successfully" do
+    title = 'comprar arroz'
     sign_in
-
-    click_on "Add new todo"
-    fill_in "Title", with: "comprar arroz"
-    click_on "Submit"
-
-    expect(page).to have_css '.todos li', text: 'comprar arroz'
+    create_todo(title)
+    expect(page).to have_css '.todos li', text: title
   end
 end
